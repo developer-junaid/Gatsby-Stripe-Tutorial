@@ -37,7 +37,7 @@ plugins: [
 
 #### Stripe Setup
 
-- Sign up to (https://www.stripe.com/)[stripe]
+- Sign up to (Stripe)[https://www.stripe.com/]
 
 ---
 
