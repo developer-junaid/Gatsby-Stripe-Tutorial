@@ -123,3 +123,4 @@ npm i @strapi/strapi-js gatsby-source-stripe dotenv
 
 - Gatsby
 - Strapi
+- GraphQl
