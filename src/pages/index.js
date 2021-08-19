@@ -1,29 +1,64 @@
-import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import React, { useState } from "react"
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
+// Stripe
+import { loadStripe } from "@stripe/stripe-js"
 
-const IndexPage = () => (
-  <Layout>
-    <Seo title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <StaticImage
-      src="../images/gatsby-astronaut.png"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p>
-  </Layout>
-)
+// Stripe Promise
+const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
+
+// Index
+const IndexPage = () => {
+  const [stripeError, setStripeError] = useState()
+  const [loading, setLoading] = useState()
+
+  const handleClick = async () => {
+    setLoading(true)
+
+    // Stripe Instantiate
+    const stripe = await stripePromise
+
+    // Redirect to checkout
+    const { error } = await stripe.redirectToCheckout({
+      lineItems: [
+        {
+          price: `price_1JPywoJsab2N7UO9GPxbmMV2`,
+          quantity: 1,
+        },
+      ],
+      mode: "payment",
+      cancelUrl: window.location.origin,
+      successUrl: `${window.location.origin}/thankyou`,
+      customerEmail: "hello@bob.com",
+    })
+
+    // If error
+    if (error) {
+      setLoading(false)
+      setStripeError(error)
+    }
+  }
+
+  // Return
+  return (
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      {stripeError && <p style={{ color: "red" }}>{stripeError}</p>}
+      <button
+        role="link"
+        style={{ cursor: "pointer" }}
+        onClick={handleClick}
+        disabled={loading}
+      >
+        Go to Checkout
+      </button>
+    </div>
+  )
+}
 
 export default IndexPage

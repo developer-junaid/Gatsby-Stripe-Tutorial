@@ -33,7 +33,7 @@ plugins: [
 ]
 ```
 
-- Create .env.development and .env.production at the root
+- Create .env at the root
 
 ---
 
@@ -42,7 +42,7 @@ plugins: [
 - Sign up to [Stripe](https://www.stripe.com/)
 - Toggle on `Viewing test data` at left panel
 - Click Developers > API Keys
-- Copy Publishable key and secret key and paste inside .env.production
+- Copy Publishable key and secret key and paste inside .env
 - Add secret key inside 'secret' option of gatsby-config plugin for stripe
 - Install dotenv package
 - Tell node to look for required .env file
@@ -50,7 +50,7 @@ plugins: [
 
 ```
 require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`
+  path: `.env`
 })
 ```
 
@@ -61,6 +61,7 @@ require('dotenv').config({
 - Go to stripe
 - Go to settings > Checkout settings
 - Enable `Client-only-integration`
+- **NOTE: Add your domains here when deploying your app**
 - Go to products > Add Product
 - Add product details
 - - Image
@@ -73,8 +74,10 @@ require('dotenv').config({
 
 #### Integrate Stripe with Frontend
 
-- Create file src/utils/stripejs.js
-- add stripe code `you can copy from the file`
+- Create Stripe promise with the publishable id
+- Call redirect to checkout method with the product and thier ids
+- you can copy the id from the stripe products section
+- Click the Go to checkout button and you'll be redirected to checkout
 
 ---
 
