@@ -1,3 +1,8 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
+// Exports
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -11,7 +16,7 @@ module.exports = {
       resolve: `gatsby-source-stripe`,
       options: {
         objects: ["Price"],
-        secretKey: "secret",
+        secretKey: process.env.GATSBY_STRIPE_SECRET,
         downloadFiles: false,
       },
     },
