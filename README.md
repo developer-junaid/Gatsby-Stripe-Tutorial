@@ -4,7 +4,7 @@
 
 ## **Client Only Integration**
 
-<img src='./home.png'>
+<img src='./src/images/home.png'>
 
 ## Steps
 

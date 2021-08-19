@@ -1,63 +1,20 @@
-import React, { useState } from "react"
+import React from "react"
 
-// Stripe
-import { loadStripe } from "@stripe/stripe-js"
+// Styles
+import "./../styles/styles.css"
 
-// Stripe Promise
-const stripePromise = loadStripe(process.env.GATSBY_STRIPE_PUBLISHABLE_KEY)
+// Link
+import { Link } from "gatsby"
 
 // Index
 const IndexPage = () => {
-  const [stripeError, setStripeError] = useState()
-  const [loading, setLoading] = useState()
-
-  const handleClick = async () => {
-    setLoading(true)
-
-    // Stripe Instantiate
-    const stripe = await stripePromise
-
-    // Redirect to checkout
-    const { error } = await stripe.redirectToCheckout({
-      lineItems: [
-        {
-          price: `price_1JPywoJsab2N7UO9GPxbmMV2`,
-          quantity: 1,
-        },
-      ],
-      mode: "payment",
-      cancelUrl: window.location.origin,
-      successUrl: `${window.location.origin}/thankyou`,
-      customerEmail: "hello@bob.com",
-    })
-
-    // If error
-    if (error) {
-      setLoading(false)
-      setStripeError(error)
-    }
-  }
-
   // Return
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      {stripeError && <p style={{ color: "red" }}>{stripeError}</p>}
-      <button
-        role="link"
-        style={{ cursor: "pointer" }}
-        onClick={handleClick}
-        disabled={loading}
-      >
-        Buy Single Product
-      </button>
+    <div className="main-container">
+      <h1>Homepage</h1>
+      <Link to="/products" className="link">
+        See Products
+      </Link>
     </div>
   )
 }
