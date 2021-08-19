@@ -5,6 +5,7 @@
 ## **Client Only Integration**
 
 ### Link :link: https://stripe-gatsby-checkout.netlify.app/
+### Video Demp: :link: https://youtu.be/fzSe_vI9c-g
 
 <img src='./src/images/home.png'>
 
