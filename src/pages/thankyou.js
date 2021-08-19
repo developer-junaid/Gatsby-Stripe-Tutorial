@@ -1,10 +1,16 @@
 import React from "react"
 
+// Helmet
+import { Helmet } from "react-helmet"
+
 const thankyou = () => {
   return (
-    <div>
-      <h2>Thankyou for your purchase</h2>
-    </div>
+    <>
+      <Helmet title="Strapi Gatsby Tutorial" />
+      <div>
+        <h2>Thankyou for your purchase</h2>
+      </div>
+    </>
   )
 }
 

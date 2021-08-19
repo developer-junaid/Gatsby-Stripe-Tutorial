@@ -9,16 +9,18 @@ const Product = ({ nodeId, product, loading, handleClick }) => {
         src={product.images[0]}
         alt={product.name}
       />
-      <h2>{product.name}</h2>
-      <p>{product.description}</p>
-      <button
-        className="button"
-        type="button"
-        disabled={loading}
-        onClick={event => handleClick(event, nodeId)}
-      >
-        Buy
-      </button>
+      <div className="content">
+        <h2>{product.name}</h2>
+        <p>{product.description}</p>
+        <button
+          className="button"
+          type="button"
+          disabled={loading}
+          onClick={event => handleClick(event, nodeId)}
+        >
+          {loading ? "..." : "Buy"}
+        </button>
+      </div>
     </div>
   )
 }
