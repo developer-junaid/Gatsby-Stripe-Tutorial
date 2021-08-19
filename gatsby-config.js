@@ -5,8 +5,8 @@ require("dotenv").config({
 // Exports
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Gatsby Stripe Tutorial`,
+    description: `Stripe Checkout tutorial using Gatsby`,
     author: `@gatsbyjs`,
     siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
   },
@@ -16,7 +16,7 @@ module.exports = {
       resolve: `gatsby-source-stripe`,
       options: {
         objects: ["Price"],
-        secretKey: process.env.GATSBY_STRIPE_SECRET,
+        secretKey: process.env.GATSBY_STRIPE_SECRET_KEY,
         downloadFiles: false,
       },
     },

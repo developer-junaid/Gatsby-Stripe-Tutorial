@@ -59,7 +59,22 @@ require('dotenv').config({
 #### Setup Products to sell
 
 - Go to stripe
-- Go to settings
+- Go to settings > Checkout settings
+- Enable `Client-only-integration`
+- Go to products > Add Product
+- Add product details
+- - Image
+- - name
+- - Description
+- - Pricing `One time, standard, $20`
+- Save product
+
+---
+
+#### Integrate Stripe with Frontend
+
+- Create file src/utils/stripejs.js
+- add stripe code `you can copy from the file`
 
 ---
 
