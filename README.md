@@ -4,6 +4,8 @@
 
 ## **Client Only Integration**
 
+### Link :link: https://stripe-gatsby-checkout.netlify.app/
+
 <img src='./src/images/home.png'>
 
 ## Steps
