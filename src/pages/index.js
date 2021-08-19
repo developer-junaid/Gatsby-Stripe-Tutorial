@@ -44,6 +44,7 @@ const IndexPage = () => {
       style={{
         minHeight: "100vh",
         display: "flex",
+        flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
       }}
@@ -55,7 +56,7 @@ const IndexPage = () => {
         onClick={handleClick}
         disabled={loading}
       >
-        Go to Checkout
+        Buy Single Product
       </button>
     </div>
   )

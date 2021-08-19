@@ -2,7 +2,7 @@
 
 ## Stack = Gatsby + Stripe
 
-### Tutorial : :link: https://howtocode.io/jamstack-gatsby-stripe-ecommerce/
+## **Client Only Integration**
 
 <img src='./home.png'>
 
@@ -72,12 +72,44 @@ require('dotenv').config({
 
 ---
 
-#### Integrate Stripe with Frontend
+#### Integrate Stripe Checkout with Frontend
 
 - Create Stripe promise with the publishable id
 - Call redirect to checkout method with the product and thier ids
 - you can copy the id from the stripe products section
 - Click the Go to checkout button and you'll be redirected to checkout
+
+---
+
+#### Getting Stripe Products Data via Graphql Queries
+
+- Try GraphQl queries inside playground `allStripePrice`
+- Integrate that query with frontend using
+
+```
+import { graphql, useStaticQuery } from "gatsby"
+
+// Inside your component
+const data = useStaticQuery(graphql`
+    query GetProducts {
+      allStripePrice {
+        edges {
+          node {
+            id
+            product {
+              id
+              description
+              images
+              name
+            }
+          }
+        }
+      }
+    }
+  `)
+```
+
+- Pass Id to redirectToCheckout function to trigger each product on Click of Buy Button
 
 ---
 
